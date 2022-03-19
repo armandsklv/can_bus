@@ -11,6 +11,7 @@ y_vals = []
 
 index = count()
 
+
 # fig, axs = plt.subplots(nrows=4, ncols=2)
 # axs[0, 0].plot(x_vals, y_vals)
 # axs[0, 0].set_title('Byte1')
@@ -23,10 +24,11 @@ index = count()
 # axs[3, 1].set_title('Byte8')
 
 def animate(i):
-    x_vals.append(next(index))
-    y_vals.append(random.randint(0, 5))
+    data = pd.read_csv('test_csv_2022-03-19.csv')
+    x = data['Timestamp']
+    y = data['Byte7']
     plt.cla()
-    plt.plot(x_vals, y_vals)
+    plt.plot(x, y, label='test')
 
     # axs[0, 0].clear()
     # axs[1, 0].clear()
@@ -45,6 +47,7 @@ def animate(i):
     # axs[1, 1].plot(x_vals, y_vals)
     # axs[2, 1].plot(x_vals, y_vals)
     # axs[3, 1].plot(x_vals, y_vals)
+
 
 anim_ = FuncAnimation(plt.gcf(), animate, interval=1)
 

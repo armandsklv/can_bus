@@ -5,7 +5,7 @@ import time
 
 ser = serial.Serial(port='COM3', baudrate=115200)
 
-csv_header = ['Timestamp', 'ID', 'Byte1', 'Byte2', 'Byte3', 'Byte4', 'Byte5', 'Byte6', 'Byte7', 'Byte8']
+csv_header = ['Laika_zimogs', 'ID', 'Baits1', 'Baits2', 'Baits3', 'Baits4', 'Baits5', 'Baits6', 'Baits7', 'Baits8']
 
 # Izveido jaunu .csv failu, kurā tiks ierakstīti CAN kopnes dati un pievienojam tam galveni, jeb kolonnu nosaukumus
 with open('test_csv_'+str(datetime.datetime.now().date())+'.csv', 'w') as csv_file:
@@ -20,16 +20,16 @@ while True:
         testData = ser.readline().decode('utf-8')
         data = testData.rstrip().split(',')
         row = {
-            "Timestamp": str(round(time.time() - t_start, 3)),
+            "Laika_zimogs": str(round(time.time() - t_start, 3)),
             "ID": data[0],
-            "Byte1": data[1],
-            "Byte2": data[2],
-            "Byte3": data[3],
-            "Byte4": data[4],
-            "Byte5": data[5],
-            "Byte6": data[6],
-            "Byte7": data[7],
-            "Byte8": data[8]
+            "Baits1": data[1],
+            "Baits2": data[2],
+            "Baits3": data[3],
+            "Baits4": data[4],
+            "Baits5": data[5],
+            "Baits6": data[6],
+            "Baits7": data[7],
+            "Baits8": data[8]
         }
 
         csv_writer.writerow(row)
